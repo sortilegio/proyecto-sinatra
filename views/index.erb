@@ -1,0 +1,22 @@
+<form action="/" method="post">
+	<input type="text" name="title">
+	<input type="submit" value="Crear Tarea">
+</form>
+
+<ul>
+	<% @tasks.each do |task| %>
+		<li>
+			<h3><%= task["title"].capitalize %></h3>
+			<p>Estado:</p>
+			<% if task["done"] %>
+				<p>Completado</p>
+				<% else %>
+				<p>No Completado</p>
+			<% end %>
+			<% if !task["done"] %>
+				<a href="completar/<%= task["id"] %>">Completar</a>
+			<% end %>
+			<a href="delete/<%= task["id"] %>">Eliminar</a>
+		</li>
+	<% end %>
+</ul>
